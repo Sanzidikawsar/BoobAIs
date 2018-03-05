@@ -1,0 +1,54 @@
+{
+    "IoTJumpWay": {
+        "Location": YourLocationID,
+        "Zone": YourZoneID,
+        "Device": YourDeviceID,
+        "App": YourAppID
+    },
+    "IoTJumpWayApp": {
+        "Name" : "YourAppName"
+    },
+    "IoTJumpWayDevice": {
+        "Name" : "YourDeviceName"
+    },
+    "IoTJumpWayMQTT": {
+        "Username": "YourMQTTusername",
+        "Password": "YourMQTTpassword"
+    },
+    "Actuators": {},
+    "Cameras": [
+        {
+            "ID": YourCameraID,
+            "URL": 0,
+            "Name": "YourCameraName"
+        }
+    ],
+    "Sensors": {},
+	"IoTJumpWayMQTTSettings": {
+        "MQTTUsername": "YourMQTTUsername",
+        "MQTTPassword": "YourMQTTPassword"
+    },
+	"ClassifierSettings":{
+		"dataset_dir":"model/train/",
+		"log_dir":"model/_logs",
+		"classes":"model/classes.txt",
+		"labels":"labels.txt",
+		"labels_file":"model/train/labels.txt",
+		"validation_size":0.3,
+		"num_shards":2,
+		"random_seed":50,
+		"tfrecord_filename":"200label",
+		"file_pattern":"200label_%s_*.tfrecord",
+		"image_size":299,
+		"num_classes":2,
+		"num_epochs":60,
+		"batch_size":10,
+		"initial_learning_rate":0.0001,
+		"learning_rate_decay_factor":0.96,
+		"num_epochs_before_decay":10,
+        "NetworkPath":"",
+        "InceptionImagePath":"model/inception/test/",
+        "InceptionThreshold": 0.54,
+        "InceptionGraph":"igraph"
+	}
+}
