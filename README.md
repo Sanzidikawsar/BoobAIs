@@ -15,5 +15,5 @@ BoobAIs is made up of 4 core applications:
 - **Trainer:** A training program that allows you to train your own convulutional neural network for computer vision using your own image.
 - **Evaluator:** An evaluation program for evaluating your model. 
 - **Classifier:** A classification program for testing your model on your own testing dataset. 
-- **Server/API:** A server that powers a REST Api on an Intel NUC. The server recieves images sent from an Android app, process them and returns a classification. 
+- **Server/API:** A server that powers a REST Api on an Intel NUC, providing access to the classifier. 
 - **Android App:** An Android app for managing your neural network, uploading new training data and classifying images. 
