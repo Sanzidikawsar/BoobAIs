@@ -85,7 +85,7 @@ Next install the IoT JumpWay MQTT Client. For this you can execute the following
 
 ## IoT JumpWay Device Connection Credentials & Settings
 
-- Setup an IoT JumpWay Location Device for TASS, ensuring you set up you camera node,as you will need the ID of the camera for the project to work. Once your create your device, make sure you note the MQTT username and password, the device ID and device name exactly, you will also need the zone and location ID. You will need to edit your device and add the rules that will allow it to communicate autonomously with the other devices and applications on the network, but for now, these are the only steps that need doing at this point.
+- Setup an IoT JumpWay Location Device for BoobAIs, ensuring you set up a camera node, as you will need the ID of the dummy camera for the project to work. Once your create your device, make sure you note the MQTT username and password, the device ID and device name exactly, you will also need the zone and location ID. You will need to edit your device and add the rules that will allow it to communicate autonomously with the other devices and applications on the network, but for now, these are the only steps that need doing at this point.
 
 Follow the [IoT JumpWay Developer Program (BETA) Location Device Doc](https://github.com/TechBubbleTechnologies/IoT-JumpWay-Docs/blob/master/4-Location-Devices.md "IoT JumpWay Developer Program (BETA) Location Device Doc") to set up your devices.
 
@@ -298,7 +298,9 @@ inception-v3 on NCS
 
 ## Integrating The Internet Of Things.
 
-![IoT JumpWay Intel® Edison Dev Kit IoT Alarm](../../images/Dev-Kit-IoT-Alarm/Edsion-Hardware-Setup.jpg)
+![IoT JumpWay Intel® Edison Dev Kit IoT Alarm](images/Edsion-Hardware-Setup.jpg)
+
+The capabilities of AI can be massively extended through the use of the Internet of Things, creating intelligent automated environments and applications. In this tutorial we show an example of this by publishing command messages to the IoT via the IoT JumpWay and controlling a independent IoT devices automatically based on identifications from the AI.
 
 The next step is to set up your Intel® Edison so that TASS can communicate with it via the IoT JumpWay. For this, I already created a tutorial for the IoT JumpWay Intel® Edison Dev Kit IoT Alarm that will guide you through this process. The only difference is that you do not need to set up the Python commands application, as in this project, TASS will replace the Python commands application, to save time, please only follow the steps for the Intel® Edison device Node JS application. 
 
@@ -312,9 +314,9 @@ Once you have completed that tutorial and have your device setup, return here to
 
 You are now ready to take the final steps, at this point you should have everything set up and your Intel® Edison Dev Kit IoT Alarm should be running and connected to the IoT JumpWay waiting for instructions. 
 
-Next we are going to set up the rules that allow TASS PVL to control your Intel® Edison Dev Kit IoT Alarm autonomously. Go back to the TAS PVL device page and make sure you are on the edit page. Scroll down to below where you added the camera node and you will see you are able to add rules. 
+Next we are going to set up the rules that allow TASS PVL to control your Intel® Edison Dev Kit IoT Alarm autonomously. Go back to your BoobAIs device page in the IoT JumpWay console and make sure you are on the edit page. Scroll down to below where you added the camera node and you will see you are able to add rules. 
 
-![IoT JumpWay Intel® Edison Dev Kit IoT Alarm](../../images/Automation.PNG)
+![IoT JumpWay Intel® Edison Dev Kit IoT Alarm](images/Automation.PNG)
 
 The rules that we want to add are as follows:
 
@@ -332,9 +334,9 @@ In the event that an object is detected with a confidence higher than the thresh
 
 When the program detects an object, it will send sensor data to the [IoT JumpWay](https://iot.techbubbletechnologies.com/ "IoT JumpWay"). You will be able to access the data in the [IoT JumpWay Developers Area](https://iot.techbubbletechnologies.com/developers/dashboard/ "IoT JumpWay Developers Area"). Once you have logged into the Developers Area, visit the [IoT JumpWay Location Devices Page](https://iot.techbubbletechnologies.com/developers/location-devices "Location Devices page"), find your device and then visit the Sensor Data pages to view the data sent from the device.
 
-![IoT JumpWay Sensor Data](../../images/main/SensorData.png)
+![IoT JumpWay Sensor Data](images/SensorData.png)
 
-![IoT JumpWay Warning Data](../../images/main/WarningData.png)
+![IoT JumpWay Warning Data](images/WarningData.png)
 
 ## Bugs/Issues
 
@@ -342,6 +344,6 @@ Please feel free to create issues for bugs and general issues you come across wh
 
 ## Contributors
 
-[![Adam Milton-Barker, Intel® Software Innovator](../../images/main/Intel-Software-Innovator.jpg)](https://github.com/AdamMiltonBarker)
+[![Adam Milton-Barker, Intel® Software Innovator](images/Intel-Software-Innovator.jpg)](https://github.com/AdamMiltonBarker)
 
  
