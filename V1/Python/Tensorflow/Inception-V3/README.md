@@ -220,9 +220,47 @@ python3 TassMovidiusClassifier.py InceptionTest
 
 ## Testing Your IDC Model
 
-Once training has finished, the shell script will execute the evaluation program and start the classifier in test mode. The output of the program will be shown in your terminal.
+Once training has finished, the shell script will execute the evaluation program and start the classifier in test mode. The output of the program will be shown in your terminal. After just a few hours training, the model was performing very well, here is a selection of the output, a classification of 0 shows that the AI thinks the image is not IDC positive, and a classification of 1 is positive.
 
-## Setting Up Your Intel® Edison IoT Alarm
+```
+-- Loaded Test Image model/test/8980_idx5_x51_y801_class0.png
+
+-- DETECTION STARTING
+-- STARTED: :  2018-03-06 01:05:09.889571
+
+-- DETECTION ENDING
+-- ENDED:  2018-03-06 01:05:11.780421
+-- TIME: 1.8908562660217285
+
+TASS Identified  0 With A Confidence Of 1.0
+
+*******************************************************************************
+inception-v3 on NCS
+*******************************************************************************
+0 0 1.0
+1 1 0.0
+*******************************************************************************
+
+-- Loaded Test Image model/test/8980_idx5_x751_y1151_class1.png
+
+-- DETECTION STARTING
+-- STARTED: :  2018-03-06 01:05:11.783768
+
+-- DETECTION ENDING
+-- ENDED:  2018-03-06 01:05:13.674658
+-- TIME: 1.8908960819244385
+
+TASS Identified  1 With A Confidence Of 0.937
+
+*******************************************************************************
+inception-v3 on NCS
+*******************************************************************************
+1 1 0.937
+0 0 0.0628
+*******************************************************************************
+```
+
+## Integrating The Internet Of Things.
 
 ![IoT JumpWay Intel® Edison Dev Kit IoT Alarm](../../images/Dev-Kit-IoT-Alarm/Edsion-Hardware-Setup.jpg)
 

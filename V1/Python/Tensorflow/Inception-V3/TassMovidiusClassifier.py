@@ -250,7 +250,7 @@ def main(argv):
             print("")
             print("-- INCEPTION V3 TEST MODE ENDING")
             print("-- ENDED: ", humanEnd)
-            print("-- TIME: {0}".format(clockEnd - clockStart))
+            print("-- TIME(secs): {0}".format(clockEnd - clockStart))
             print("")
             
             TassMovidiusClassifier.graph.DeallocateGraph()
