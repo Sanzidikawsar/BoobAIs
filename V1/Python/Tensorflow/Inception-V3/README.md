@@ -259,40 +259,44 @@ INFO:tensorflow:Final Streaming Accuracy: 0.9060
 Once evaluation has finished the testing program will start. In my example I had to classes 0 and 1 (IDC negative & IDC positive), a classification of 0 shows that the AI thinks the image is not IDC positive, and a classification of 1 is positive.
 
 ```
--- Loaded Test Image model/test/8980_idx5_x51_y801_class0.png
+-- Loaded Test Image model/test/8980_idx5_x751_y1051_class1.png
 
 -- DETECTION STARTING
--- STARTED: :  2018-03-06 01:05:09.889571
+-- STARTED: :  2018-03-06 15:40:00.464726
+
 
 -- DETECTION ENDING
--- ENDED:  2018-03-06 01:05:11.780421
--- TIME: 1.8908562660217285
+-- ENDED:  2018-03-06 15:40:02.386694
+-- TIME: 1.9219634532928467
+1
 
-TASS Identified  0 With A Confidence Of 1.0
+TASS Identified IDC with A Confidence Of 0.9707
+
+-- Published to Device Sensors Channel
 
 *******************************************************************************
 inception-v3 on NCS
 *******************************************************************************
-0 0 1.0
-1 1 0.0
+1 1 0.9707
+0 0 0.02898
 *******************************************************************************
 
--- Loaded Test Image model/test/8980_idx5_x751_y1151_class1.png
+-- Published: 2
+-- Loaded Test Image model/test/8980_idx5_x101_y1051_class0.png
 
 -- DETECTION STARTING
--- STARTED: :  2018-03-06 01:05:11.783768
+-- STARTED: :  2018-03-06 15:40:02.390235
+
 
 -- DETECTION ENDING
--- ENDED:  2018-03-06 01:05:13.674658
--- TIME: 1.8908960819244385
-
-TASS Identified  1 With A Confidence Of 0.937
-
+-- ENDED:  2018-03-06 15:40:04.281153
+-- TIME: 1.8909223079681396
+0
 *******************************************************************************
 inception-v3 on NCS
 *******************************************************************************
-1 1 0.937
-0 0 0.0628
+0 0 0.9873
+1 1 0.01263
 *******************************************************************************
 ```
 
