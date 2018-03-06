@@ -32,12 +32,12 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 print("-- Running on Python "+sys.version)
 print("")
 
-from mvnc import mvncapi as mvnc
-import sys,os,time,csv,getopt,json,time 
-import cv2
+import time,csv,getopt,json,time, cv2
+
 import numpy as np
 import JumpWayMQTT.Device as JWMQTTdevice 
 
+from mvnc import mvncapi as mvnc
 from tools.helpers import TassMovidiusHelpers
 from datetime import datetime
 from skimage.transform import resize
@@ -213,12 +213,12 @@ def main(argv):
                     print("-- TIME: {0}".format(detectionClockEnd - detectionClockStart))
                     print("")
                     
-                    if output[top_inds[0]] > TassMovidiusClassifier._configs["ClassifierSettings"]["InceptionThreshold"]:
+                    if output[top_inds[0]] > TassMovidiusClassifier._configs["ClassifierSettings"]["InceptionThreshold"] and TassMovidiusClassifier.categories[top_inds[0]] == "1":
                         
                         identified = identified + 1
                         
                         print("")
-                        print("TASS Identified ", TassMovidiusClassifier.categories[top_inds[0]], "With A Confidence Of", str(output[top_inds[0]]))
+                        print("TASS Identified IDC with A Confidence Of", str(output[top_inds[0]]))
                         print("")
 
                         TassMovidiusClassifier.jumpwayClient.publishToDeviceChannel(
@@ -226,7 +226,7 @@ def main(argv):
                                 {
                                     "Sensor":"CCTV",
                                     "SensorID": TassMovidiusClassifier._configs["Cameras"][0]["ID"],
-                                    "SensorValue":"OBJECT: " + TassMovidiusClassifier.categories[top_inds[0]] + " (Confidence: " + str(output[top_inds[0]]) + ")"
+                                    "SensorValue":"IDC: " + TassMovidiusClassifier.categories[top_inds[0]] + " (Confidence: " + str(output[top_inds[0]]) + ")"
                                 }
                             )
                             
@@ -251,15 +251,16 @@ def main(argv):
             print("")
             print("-- INCEPTION V3 TEST MODE ENDING")
             print("-- ENDED: ", humanEnd)
+            print("-- TESTED: ", files)
+            print("-- IDENTIFIED: ", identified)
             print("-- TIME(secs): {0}".format(clockEnd - clockStart))
+            print("")
+                            
+            print("!! SHUTTING DOWN !!")
             print("")
             
             TassMovidiusClassifier.graph.DeallocateGraph()
             TassMovidiusClassifier.movidius.CloseDevice()
-            sys.exit()
-                            
-            print("!! SHUTTING DOWN !!")
-            print("")
             
         else:
             
