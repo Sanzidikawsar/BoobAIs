@@ -300,6 +300,110 @@ inception-v3 on NCS
 *******************************************************************************
 ```
 
+## Serving Your Live IDC Model
+
+Now that we are all trained and tested, it is time to set up the server that will answer to the Android application and provide a classification. For this I have provided **TassMovidiusServer.py** and **TassMovidiusClient.py**
+
+The following instructions will help you set up your server and test a positive and negative prediction:
+
+1. If you used the [Predict IDC in Breast Cancer Histology Images](https://www.kaggle.com/paultimothymooney/predict-idc-in-breast-cancer-histology-image "Predict IDC in Breast Cancer Histology Images") dataset, you can use the **positive.png** & **negative.png** as they are from that dataset, if not you should chose a positive and negative example from your testing set and replace these images.
+
+2. The server is currently set to start up on localhost, if you would like to change this you need to edit line 259 of **TassMovidiusServer.py** and line 25 of **TassMovidiusClient.py** to match your desired host.
+
+3. Open a terminal and navigate to this directory, then issue the following commands:
+    
+```
+$ python3.5 TassMovidiusServer.py
+```
+
+This will start the server and wait to receive images for classification.
+
+4. If you have followed all of the above steps, you can now start the client with the following commands:
+
+```
+$ python3.5 TassMovidiusClient.py
+```
+
+```
+-- INCEPTION V3 LIVE INFERENCE STARTING
+-- STARTED: :  2018-03-06 17:10:38.826920
+
+TassMovidiusServer.py:148: DeprecationWarning: The binary mode of fromstring is deprecated, as it behaves surprisingly on unicode inputs. Use frombuffer instead
+  nparr = np.fromstring(r.data, np.uint8)
+-- Loading Sample
+-- Loaded Sample
+-- DETECTION STARTING
+-- STARTED: :  2018-03-06 17:10:38.830703
+
+
+-- DETECTION ENDING
+-- ENDED:  2018-03-06 17:10:40.751271
+-- TIME: 1.9205756187438965
+
+
+TASS Identified IDC with a confidence of 0.816
+
+-- Published to Device Sensors Channel
+
+*******************************************************************************
+-- Published: 2
+inception-v3 on NCS
+*******************************************************************************
+1 1 0.816
+0 0 0.1838
+*******************************************************************************
+
+-- INCEPTION V3 LIVE INFERENCE ENDING
+-- ENDED:  2018-03-06 17:10:40.752129
+-- TESTED:  1
+-- IDENTIFIED:  1
+-- TIME(secs): 1.9252095222473145
+```
+
+```
+-- INCEPTION V3 LIVE INFERENCE STARTING
+-- STARTED: :  2018-03-06 17:10:45.777470
+
+-- Loading Sample
+-- Loaded Sample
+-- DETECTION STARTING
+-- STARTED: :  2018-03-06 17:10:45.781196
+
+
+-- DETECTION ENDING
+-- ENDED:  2018-03-06 17:10:47.671904
+-- TIME: 1.8907184600830078
+
+*******************************************************************************
+inception-v3 on NCS
+*******************************************************************************
+0 0 0.994
+1 1 0.00566
+*******************************************************************************
+
+-- INCEPTION V3 LIVE INFERENCE ENDING
+-- ENDED:  2018-03-06 17:10:47.672187
+-- TESTED:  1
+-- IDENTIFIED:  0
+-- TIME(secs): 1.8947057723999023
+```
+
+```
+!! Welcome to TASS Movidius Client, please wait while the program initiates !!
+
+-- Running on Python 3.5.2 (default, Nov 23 2017, 16:37:01)
+[GCC 5.4.0 20160609]
+
+-- Imported Required Modules
+-- TassMovidiusClient Initiated
+
+{'Response': 'OK', 'ResponseMessage': 'IDC Detected!', 'Results': 1}
+{'Response': 'OK', 'ResponseMessage': 'IDC Not Detected!', 'Results': 1}
+
+```
+
+We are now ready for the Android application that will be used to control training and send training / inference images.
+
 ## Integrating The Internet Of Things.
 
 ![IoT JumpWay Intel® Edison Dev Kit IoT Alarm](images/Edsion-Hardware-Setup.jpg)
