@@ -23,14 +23,19 @@ print("!! Welcome to TASS Movidius Evaluator, please wait while the program init
 print("")
 
 import os, sys
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' 
 
 print("-- Running on Python "+sys.version)
 print("")
 
-import tools.inception_preprocessing, time, json
+import tools.inception_preprocessing, time, json, cv2
 
+import matplotlib
+matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import tensorflow as tf
+import numpy as np
+import pylab as pl
 
 from tensorflow.python.platform import tf_logging as logging
 from tensorflow.contrib.framework.python.ops.variables import get_or_create_global_step
@@ -54,6 +59,8 @@ class TassMovidiusEval():
         with open('confs.json') as confs:
 
             self._confs = json.loads(confs.read())
+
+        self.checkpoint_file = tf.train.latest_checkpoint(self._confs["ClassifierSettings"]["log_dir"])
         
         #Open the labels file
         self.labels = open(self._confs["ClassifierSettings"]["labels_file"], 'r')
@@ -188,9 +195,6 @@ class TassMovidiusEval():
     	
 TassMovidiusEval = TassMovidiusEval()
 
-#Get the latest checkpoint file
-checkpoint_file = tf.train.latest_checkpoint(TassMovidiusEval._confs["ClassifierSettings"]["dataset_dir"])
-
 def run():
     
     #Create log_dir for evaluation information
@@ -222,7 +226,7 @@ def run():
 
         def restore_fn(sess):
             
-            return saver.restore(sess, checkpoint_file)
+            return saver.restore(sess, TassMovidiusEval.checkpoint_file)
 
         #Just define the metrics to track without the loss or whatsoever
         probabilities = end_points['Predictions']
@@ -258,7 +262,7 @@ def run():
 
         #Now we are ready to run in one session
         with sv.managed_session() as sess:
-            for step in xrange(int(num_batches_per_epoch * TassMovidiusEval._confs["ClassifierSettings"]["test_num_epochs"])):
+            for step in range(int(num_batches_per_epoch * TassMovidiusEval._confs["ClassifierSettings"]["test_num_epochs"])):
                 #print vital information every start of the epoch as always
                 if step % num_batches_per_epoch == 0:
                     logging.info('Epoch: %s/%s', step / num_batches_per_epoch + 1, TassMovidiusEval._confs["ClassifierSettings"]["test_num_epochs"])
@@ -283,13 +287,11 @@ def run():
                 image, label, prediction, probability = raw_images[i], labels[i], predictions[i], probabilities[i]
                 prediction_name, label_name = dataset.labels_to_name[prediction], dataset.labels_to_name[label]
                 text = 'Prediction: %s \n Ground Truth: %s \n Probability: %s' %(prediction_name, label_name, probability[prediction])
-                img_plot = plt.imshow(image)
-
-                #Set up the plot and hide axes
-                plt.title(text)
-                img_plot.axes.get_yaxis().set_ticks([])
-                img_plot.axes.get_xaxis().set_ticks([])
-                plt.show()
+                cv2.imwrite('model/eval/'+i+'.png',image)
+                img_plot = cv2.imread('model/eval/'+i+'.png')
+                pl.plot(img_plot.axes.get_xaxis().set_ticks([]),img_plot.axes.get_yaxis().set_ticks([]))
+                pl.title(text)
+                pl.savefig('model/eval/'+i+"fig.png")
 
             logging.info('Model evaluation has completed! Visit TensorBoard for more information regarding your evaluation.')
             sv.saver.save(sess, sv.save_path, global_step = sv.global_step)

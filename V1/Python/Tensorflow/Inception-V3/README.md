@@ -190,7 +190,7 @@ You can finetune the settings of the network at any time by editing the classifi
 
 ## Training Your IDC Model
 
-Once you have prepared your training data, you are ready to start training. For training I suggest using a Linux desktop or laptop, preferably with an NVIDIA GPU. To begin training, you simply need to issue the following commands (assuming BoobAIs is on your desktop):
+Once you have prepared your training data, you are ready to start training. For training I suggest using a Linux desktop or laptop, preferably with an NVIDIA GPU. To begin training, you simply need to issue the following commands:
 
 ```
 $ cd ~/Desktop/BoobAIs/V1/Python/Tensorflow/Inception-V3
@@ -218,9 +218,45 @@ python3 TassMovidiusClassifier.py InceptionTest
 6. Evaluate
 7. Test
 
+## Evaluating & Testing Your Model
+
+Once training has finished and the Movidius compatible graph has been generated, the shell script will execute the evaluation program and start the classifier in test mode. The output of the program will be shown in your terminal. After just a few hours training, the model was performing very well with a final streaming accuracy of 0.9060.
+
+```
+INFO:tensorflow:Restoring parameters from model/_logs_eval/model.ckpt-2
+INFO:tensorflow:Starting standard services.
+INFO:tensorflow:Saving checkpoint to path model/_logs_eval/model.ckpt
+INFO:tensorflow:Starting queue runners.
+INFO:tensorflow:global_step/sec: 0
+INFO:tensorflow:Epoch: 1.0/1
+INFO:tensorflow:Current Streaming Accuracy: 0.0000
+INFO:tensorflow:Global Step 4: Streaming Accuracy: 0.0000 (4.15 sec/step)
+INFO:tensorflow:Global Step 5: Streaming Accuracy: 0.8611 (0.86 sec/step)
+INFO:tensorflow:Global Step 6: Streaming Accuracy: 0.8611 (0.87 sec/step)
+INFO:tensorflow:Global Step 7: Streaming Accuracy: 0.8796 (0.94 sec/step)
+INFO:tensorflow:Global Step 8: Streaming Accuracy: 0.8889 (1.00 sec/step)
+INFO:tensorflow:Global Step 9: Streaming Accuracy: 0.8778 (0.99 sec/step)
+INFO:tensorflow:Global Step 10: Streaming Accuracy: 0.8704 (1.00 sec/step)
+
+---------------------------------------------------------------------------
+
+INFO:tensorflow:Global Step 66: Streaming Accuracy: 0.9059 (0.99 sec/step)
+INFO:tensorflow:Global Step 67: Streaming Accuracy: 0.9061 (0.99 sec/step)
+INFO:tensorflow:Global Step 68: Streaming Accuracy: 0.9058 (1.00 sec/step)
+INFO:tensorflow:Global Step 69: Streaming Accuracy: 0.9043 (1.01 sec/step)
+INFO:tensorflow:Global Step 70: Streaming Accuracy: 0.9045 (0.98 sec/step)
+INFO:tensorflow:Global Step 71: Streaming Accuracy: 0.9046 (0.99 sec/step)
+INFO:tensorflow:Global Step 72: Streaming Accuracy: 0.9048 (0.99 sec/step)
+INFO:tensorflow:Global Step 73: Streaming Accuracy: 0.9058 (0.98 sec/step)
+INFO:tensorflow:Global Step 74: Streaming Accuracy: 0.9067 (0.99 sec/step)
+INFO:tensorflow:Global Step 75: Streaming Accuracy: 0.9065 (1.00 sec/step)
+INFO:tensorflow:Global Step 76: Streaming Accuracy: 0.9062 (0.99 sec/step)
+INFO:tensorflow:Final Streaming Accuracy: 0.9060
+```
+
 ## Testing Your IDC Model
 
-Once training has finished, the shell script will execute the evaluation program and start the classifier in test mode. The output of the program will be shown in your terminal. After just a few hours training, the model was performing very well, here is a selection of the output, a classification of 0 shows that the AI thinks the image is not IDC positive, and a classification of 1 is positive.
+Once evaluation has finished the testing program will start. In my example I had to classes 0 and 1 (IDC negative & IDC positive), a classification of 0 shows that the AI thinks the image is not IDC positive, and a classification of 1 is positive.
 
 ```
 -- Loaded Test Image model/test/8980_idx5_x51_y801_class0.png
