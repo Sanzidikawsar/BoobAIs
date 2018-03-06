@@ -23,6 +23,16 @@ BoobAIs uses the power of the **Intel® Movidius** and uses a custom trained **I
 6. Live Inception V3 IDC Recognition
 6. Communication with IoT alarm via rules
 
+## Applications
+
+BoobAIs is made up of 4 core applications:
+
+- **Trainer:** A training program that allows you to train your own convulutional neural network for computer vision using your own image.
+- **Evaluator:** An evaluation program for evaluating your model. 
+- **Classifier:** A classification program for testing your model on your own testing dataset. 
+- **Server/API:** A server that powers a REST Api, providing access to the classifier. 
+- **Android App:** An Android app for managing your neural network, uploading new training data and classifying images. 
+
 ## Python Versions
 
 - Tested in Python 3.5
@@ -398,7 +408,7 @@ inception-v3 on NCS
 -- TassMovidiusClient Initiated
 
 {'Response': 'OK', 'ResponseMessage': 'IDC Detected!', 'Results': 1}
-{'Response': 'OK', 'ResponseMessage': 'IDC Not Detected!', 'Results': 1}
+{'Response': 'OK', 'ResponseMessage': 'IDC Not Detected!', 'Results': 0}
 
 ```
 

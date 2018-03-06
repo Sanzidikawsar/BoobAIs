@@ -248,7 +248,7 @@ def test():
         
     response = {
         'Response': 'OK', 
-        'Results': 1, 
+        'Results': identified, 
         'ResponseMessage': message
     }
     
