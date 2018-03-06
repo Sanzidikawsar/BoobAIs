@@ -158,6 +158,36 @@ Once you have the repo, you will need to find the files in this folder located i
 
 For this tutorial, I used a dataset from Kaggle ([Predict IDC in Breast Cancer Histology Images]("https://www.kaggle.com/paultimothymooney/predict-idc-in-breast-cancer-histology-image "Predict IDC in Breast Cancer Histology Images")), but you are free to use any dataset you like. Once you decide on your dataset you need to arrange your data into the model/train directory. Each directory should be titled with integers. In my testing I used 4400 positive and 4400 negative examples giving an overall training accuracy of 0.8716 and an average confidence of 0.96 on correct identifications. The data provided is 50px x 50px. As Inception V3 was trained on images of size 299px x 299px, the images are resized to 299px x 299px, ideally the images would be that size already so you may want to try different datasets and see how your results vary. 
 
+## Finetuning Your Settings
+
+You can finetune the settings of the network at any time by editing the classifier settings in the confs.json file.
+
+```
+"ClassifierSettings":{
+    "dataset_dir":"model/train/",
+    "log_dir":"model/_logs",
+    "classes":"model/classes.txt",
+    "labels":"labels.txt",
+    "labels_file":"model/train/labels.txt",
+    "validation_size":0.3,
+    "num_shards":2,
+    "random_seed":50,
+    "tfrecord_filename":"200label",
+    "file_pattern":"200label_%s_*.tfrecord",
+    "image_size":299,
+    "num_classes":2,
+    "num_epochs":60,
+    "batch_size":10,
+    "initial_learning_rate":0.0001,
+    "learning_rate_decay_factor":0.96,
+    "num_epochs_before_decay":10,
+    "NetworkPath":"",
+    "InceptionImagePath":"model/inception/test/",
+    "InceptionThreshold": 0.54,
+    "InceptionGraph":"igraph"
+}
+```
+
 ## Training Your IDC Model
 
 Once you have prepared your training data, you are ready to start training. For training I suggest using a Linux desktop or laptop, preferably with an NVIDIA GPU. To begin training, you simply need to issue the following commands (assuming BoobAIs is on your desktop):
