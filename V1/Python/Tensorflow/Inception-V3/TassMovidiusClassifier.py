@@ -27,6 +27,7 @@ print("!! Welcome to TASS Movidius Classifier, please wait while the program ini
 print("")
 
 import os, sys
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' 
 
 print("-- Running on Python "+sys.version)
 print("")

@@ -29,6 +29,7 @@ print("!! Welcome to TASS Movidius Trainer, please wait while the program initia
 print("")
 
 import os, sys
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' 
 
 print("-- Running on Python "+sys.version)
 print("")
