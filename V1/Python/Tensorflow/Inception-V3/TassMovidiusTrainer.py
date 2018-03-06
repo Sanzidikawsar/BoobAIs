@@ -4,7 +4,7 @@ from __future__ import print_function
 # Title: TASS Movidius Trainer
 # Description: Trains a custom Inception V3 model.
 # Acknowledgements: Uses code from chesterkuo imageclassify-movidius (https://github.com/chesterkuo/imageclassify-movidius)
-# Last Modified: 2018/03/04
+# Last Modified: 2018/03/07
 ############################################################################################
 
 ############################################################################################

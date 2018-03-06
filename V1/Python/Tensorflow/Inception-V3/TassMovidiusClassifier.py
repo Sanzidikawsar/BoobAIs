@@ -2,7 +2,7 @@
 # Title: TASS Movidius Classifier
 # Description: Test classification of local testing images.
 # Acknowledgements: Uses code from Intel movidius/ncsdk (https://github.com/movidius/ncsdk)
-# Last Modified: 2018/03/06
+# Last Modified: 2018/03/07
 ############################################################################################
 
 ############################################################################################
@@ -218,7 +218,7 @@ def main(argv):
                         identified = identified + 1
                         
                         print("")
-                        print("TASS Identified IDC with A Confidence Of", str(output[top_inds[0]]))
+                        print("TASS Identified IDC with a confidence of", str(output[top_inds[0]]))
                         print("")
 
                         TassMovidiusClassifier.jumpwayClient.publishToDeviceChannel(

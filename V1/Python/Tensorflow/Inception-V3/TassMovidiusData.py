@@ -2,7 +2,7 @@
 # Title: TASS Movidius Data Processor
 # Description: Prepares data for training a custom Inception V3 model.
 # Acknowledgements: Uses code from chesterkuo imageclassify-movidius (https://github.com/chesterkuo/imageclassify-movidius)
-# Last Modified: 2018/03/06
+# Last Modified: 2018/03/07
 ############################################################################################
 
 import os, sys, time, math, random, json, glob, cv2
