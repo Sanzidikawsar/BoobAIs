@@ -164,7 +164,7 @@ def main(argv):
 
             for file in os.listdir(rootdir):
                 
-                if file.endswith('.jpg','.jpeg','.png','.gif'):
+                if file.endswith('.jpg') or file.endswith('.jpeg') or file.endswith('.png') or file.endswith('.gif'):
                     
                     files = files + 1
                     fileName = rootdir+file

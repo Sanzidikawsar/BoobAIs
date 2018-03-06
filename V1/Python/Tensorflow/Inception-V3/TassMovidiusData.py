@@ -81,8 +81,7 @@ class TassMovidiusData():
             
             for filename in os.listdir(directory):
                 
-                #print(filename.endswith(('.jpg','.jpeg','.png','.gif')))
-                if filename.endswith(('.jpg','.jpeg','.png','.gif')):
+                if if file.endswith('.jpg') or file.endswith('.jpeg') or file.endswith('.png') or file.endswith('.gif'):
                     
                     path = os.path.join(directory, filename)
                     photoPaths.append(path)
