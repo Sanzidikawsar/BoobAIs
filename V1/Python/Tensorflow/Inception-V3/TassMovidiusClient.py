@@ -22,7 +22,7 @@ class TassMovidiusClient():
     
     def __init__(self):
 
-        self.addr = 'http://192.168.2.101:7455'
+        self.addr = 'http://localhost:7455'
         self.apiUrl = self.addr + '/api/infer'
         self.positive = 'positive.png'
         self.negative = 'negative.png'
